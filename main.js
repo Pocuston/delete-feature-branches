@@ -21,7 +21,7 @@ async function main() {
     )
   )
     .filter(isBranchOlderThanMonth)
-    .sort((branchA, branchB) => branchA.date - branchB.date);
+    .sort((branchA, branchB) => branchB.date - branchA.date);
 
   console.log(`Total number of branches: ${branches.length}`);
 
@@ -81,7 +81,7 @@ async function generateHtml(file, branches) {
   const rows = branches
     .map(
       (branch) =>
-        `<tr><td>${branch.name}</td><td>${
+        `<tr><td><code>${branch.name}</code></td><td>${
           branch.jiraKey !== null
             ? `<a href="https://jira.unicorn.com/browse/${branch.jiraKey}">${branch.jiraKey}</a>`
             : ""
